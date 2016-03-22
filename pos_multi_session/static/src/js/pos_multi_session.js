@@ -67,7 +67,7 @@ openerp.pos_multi_session = function(instance){
             this.ms_syncing_in_progress = true; // don't broadcast updates made from this message
             var error = false;
             try{
-                console.log('on_update', message)
+                //console.log('on_update', message)
                 var action = message.action;
                 var data = message.data || {}
                 var order = false;
@@ -83,7 +83,7 @@ openerp.pos_multi_session = function(instance){
                 }
             }catch(err){
                 error = err;
-                console.error(err);
+                //console.error(err);
             }
             this.ms_syncing_in_progress = false;
             if (error){
@@ -385,7 +385,7 @@ openerp.pos_multi_session = function(instance){
             this.send({action: 'update', data: data})
         },
         send: function(message){
-            console.log('send', message)
+            //console.log('send', message)
            var self = this;
             var send_it = function() {
                 return openerp.session.rpc("/pos_multi_session/update", {multi_session_id: self.pos.config.multi_session_id[0], message: message});
